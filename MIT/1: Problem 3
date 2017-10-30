@@ -1,0 +1,35 @@
+"""Problem 3
+Assume s is a string of lower case characters.
+
+Write a program that prints the longest substring of s in which the letters occur in alphabetical order. 
+For example, if s = 'azcbobobegghakl', then your program should print
+
+Longest substring in alphabetical order is: beggh
+
+In the case of ties, print the first substring. 
+For example, if s = 'abcbcd', then your program should print
+
+Longest substring in alphabetical order is: abc
+
+Note: This problem may be challenging. We encourage you to work smart. If you've spent more than a few hours on this problem, we suggest that you move on to a different part of the course. If you have time, come back to this problem after you've had a break and cleared your head."""
+
+new_list= ''
+old_list = ''
+cut_s = s[1:]
+
+for x in range (len(s)):
+    if x == len(s)-1 and s[x] == s[-1]: # If last letter is after previous in alphabet, append.
+        new_list += s[x]
+        if len(new_list) > len(old_list):
+            old_list = new_list
+    elif x == len(s)-1: # Prevents string from going out of range
+        break
+    elif s[x] > s[x+1] or x == len(s): # If next is earlier than previous, letter appended to new list and is stored, compared and wiped. OR end of the line
+        new_list += s[x]
+        if len(new_list) > len(old_list):
+            old_list = new_list
+        new_list = ''
+    elif s[x] <= s[x+1] : # Compares current to next. Appends if next is later in alphabet OR if equal
+        new_list += s[x]
+
+print ('Longest substring in alphabetical order is:', old_list)
