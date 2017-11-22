@@ -1,0 +1,55 @@
+'''
+From Think Python 2e
+
+Exercise 11.5. Two words are “rotate pairs” if you can rotate one of them and get the other (see
+rotate_wordin Exercise 8.5).
+Write a program that reads a wordlist and finds all the rotate pairs. Solution: http: //
+thinkpython2. com/ code/ rotate_ pairs. py.
+
+Self Comment:
+Not the best code but it works!
+TOO many nested loops
+
+Keep for records to facepalm when I become a better programmer
+'''
+
+def rotate_pairs(list):
+    pair_dict = {}
+    for word in list[:-1]:
+        print ('First Pass:',word)
+        for word2 in list[1:]:
+            x = 0
+            for y in range(len(word)):
+                if len(word) == len(word2): #Continues if words are the same length
+                    print (list)
+                    print (word, word[x], word2, word2[x])
+                    orig_turn = ord(word2[0]) - ord(word[0])
+                    turns = ord(word2[x])- ord(word[x])
+
+                    print (turns)
+                    print ('Orig Turn:', orig_turn)
+                    print ('ord a:', ord('a'))
+                    print ('ord x:',ord(word[x]),'ord x - turns:', ord(word[x])-turns)
+
+                    if ord(word[x])-turns < ord('a'):
+                        print ('Turd Head')
+                        turns = (turns-26)
+                        print ('Turd:', turns)
+                        # if turns == orig_turn:
+                        #     x+=1
+
+                    if turns == orig_turn:
+                        print ('Yey')
+                        print ('x:',x,'len(word2):',len(word2)-1)
+                        if x == len(word2)-1:
+                            pair_dict[word]=word2
+                        x += 1
+                    print ('Dict:',pair_dict)
+                    print ('')
+
+        list = list [1:] # Slowly returns a smaller list
+
+
+list_test = ('bee','orande','cff','yab','wyz','beb','cfc')
+
+print (rotate_pairs(list_test))
