@@ -1,0 +1,22 @@
+"""
+Exercise 12.2 Part 1
+
+Enter a list and the program produces a list of all anagrams within the list
+"""
+
+fin = [line.rstrip('\n') for line in open('words.txt')]
+
+def anagram_list(list_L):
+    arr = {}
+    for word_orig in list_L:
+        temp = list(word_orig.lower())
+        temp.sort()
+        temp = ''.join(temp)
+        if temp in arr:
+            arr[temp].append(word_orig)
+        else:
+            arr[temp] = [word_orig] # Add to dict
+
+    for key in arr:
+        if (len(arr[key])) > 1:
+            print arr[key]
