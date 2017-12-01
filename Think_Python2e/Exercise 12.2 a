@@ -7,6 +7,11 @@ Enter a list and the program produces a list of all anagrams within the list
 fin = [line.rstrip('\n') for line in open('words.txt')]
 
 def anagram_list(list_L):
+    """ Takes list and returns a dictionary of values as anagrams
+
+    :param list_L: List of words
+    :return: Dictionary value of anagrams
+    """
     arr = {}
     for word_orig in list_L:
         temp = list(word_orig.lower())
@@ -14,9 +19,72 @@ def anagram_list(list_L):
         temp = ''.join(temp)
         if temp in arr:
             arr[temp].append(word_orig)
+
         else:
             arr[temp] = [word_orig] # Add to dict
 
+    only_arr = {}
     for key in arr:
         if (len(arr[key])) > 1:
-            print arr[key]
+            only_arr[key] = arr[key]
+
+    return only_arr
+
+def dic_val_trim(dic, length):
+    """Finds anagrams within a list and returns anagrams of a certain character length
+
+    :param dic: List of words
+    :param length: Length of anagram characters
+    :return: Printed output of anagrams of certain length
+    """
+    anagram = anagram_list(dic)
+    result = {}
+    for k in anagram:
+        if len(k) == length:
+            result[k] = anagram[k]
+
+    descending_dict(result,x = False)
+    # for x,y in result.items():
+    #     print y
+
+
+def descending_dict(dic, x = True):
+    """ Reorders to a descending dictionary depnding on number of elements in value
+
+    :param dic: List of words
+    :param x: True if list, False if dictionary
+    :return: Output of anagrams in descending order
+    """
+
+    ## Sort by largest
+    ## Work out len of value
+    ## Set len as new key in new dict. Val is the current val of the dict
+
+    if x == True:
+        dic = anagram_list(dic)
+    descending_arr = {}
+
+    for key in dic:
+        temp_val = dic[key]
+        length_val = len(dic[key])
+
+        if length_val not in descending_arr:
+            descending_arr[length_val] = [temp_val]
+
+        else:
+            descending_arr[length_val].append(temp_val)
+
+    sorted_keys = descending_arr.keys()
+    sorted_keys.sort(reverse=True)
+
+    for iter in sorted_keys:
+        if iter in descending_arr:
+            for item in descending_arr[iter]:
+                print item
+
+    return descending_arr
+
+## Tests
+# print anagram_list(fin)
+#  print (descending_dict(fin))
+print(dic_val_trim(fin,8))
