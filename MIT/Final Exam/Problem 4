@@ -26,3 +26,57 @@ def longest_run(L):
 # If L = [5, 4, 10] then the longest run of monotonically increasing numbers in L is [4, 10] and the longest run of monotonically
 # decreasing numbers in L is [5, 4]. Your function should return the value 9 because the longest run of monotonically decreasing integers
 # occurs before the longest run of monotonically increasing numbers.
+
+### INCOMPLETE
+
+
+# def longest_run(L):
+#     """
+#     Assumes L is a list of integers containing at least 2 elements.
+#     Finds the longest run of numbers in L, where the longest run can
+#     either be monotonically increasing or monotonically decreasing.
+#     In case of a tie for the longest run, choose the longest run
+#     that occurs first.
+#     Does not modify the list.
+#     Returns the sum of the longest run.
+#     """
+#     temp_increasing =[]
+#     temp_decreasing = []
+#     increasing_list = []
+#     for i in range(1,len(L)):
+#         print (L[i - 1], L[i])
+#
+#         if L[i-1] == L[i]:
+#             temp_increasing.append(L[i-1])
+#             temp_increasing.append(L[i])
+#             increasing = temp_increasing.copy()
+#
+#         elif L[i-1] < L[i]:
+#             temp_increasing.append(L[i-1])
+#             increasing = temp_increasing.copy()
+#
+#         else:
+#             try:
+#                 len(increasing > 2)
+#             temp_increasing = []
+#
+#     for j in range(1, len(L)):
+#
+#         if L[j-1] == L[j]:
+#             temp_decreasing.append(L[j-1])
+#
+#         elif L[j-1] > L[j]:
+#             temp_decreasing.append(L[j-1])
+#             decreasing = temp_decreasing.copy()
+#
+#         else:
+#             temp_decreasing = []
+#
+#
+#
+#     return increasing, decreasing
+#
+#     # if len =
+#
+# foo = [10, 4, 3, 8, 3, 4, 5, 7, 7, 2]
+# print (longest_run(foo))
